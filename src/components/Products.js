@@ -11,6 +11,12 @@ function ProductsListPage(props) {
         return(
             <div className="container-fluid parent">
 
+                <i onClick = {() => props.history.push("/cart")} className="fa fa-shopping-cart cart">
+                <span class="badge bg-light cart-count">
+                    {Object.keys(JSON.parse(localStorage.getItem("items"))).length}
+                </span>
+                </i>
+
                 {/**images of products */}
                  <div className="container-fluid child1"> 
                     <div className="row">

@@ -1,12 +1,22 @@
 import React from 'react';
 import {detailButtonSizes} from "../Data"
 
+
+
+let itemsArray = [];
+
 function DetailsPage(props) {
-    
-    let data = JSON.parse(localStorage.getItem("info"));
+  let data = JSON.parse(localStorage.getItem("info"));
+   
+ 
+  
+  localStorage.setItem("items", JSON.stringify(itemsArray));
+  
 
     const navigate = (props) => {
-      props.history.push("/cart")
+      itemsArray.push({"image": data.image});
+      localStorage.setItem('items', JSON.stringify(itemsArray));
+      props.history.push("/cart");
     }
  
 
@@ -44,7 +54,8 @@ function DetailsPage(props) {
                   <small id="stock">In stock</small>
                   <h1>Add counter here</h1>
 
-                  <button className="cart-button" onClick={() => navigate(props)}>Add to bag</button>
+                  <button className="cart-button" onClick={() => navigate(props
+                    )}>Add to bag</button>
                   <button className="payment-button">
                      Buy online, free in-store pick up<br/> <small>Get it today, at a store near you</small>
                   </button>
